@@ -8,7 +8,7 @@ import (
 )
 
 func Greet(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"MESSAGE": "GO RELEASER DEMO :D"})
+	c.JSON(http.StatusOK, gin.H{"MESSAGE": "GO RELEASER DEMO PARA MI AMORCITO :D"})
 }
 
 func CORSMiddleware() gin.HandlerFunc {
