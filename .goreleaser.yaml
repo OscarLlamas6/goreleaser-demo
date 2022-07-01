@@ -1,0 +1,31 @@
+project_name: goreleaser-demo
+builds:
+  - env: [CGO_ENABLED=0]
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+dockers:
+- image_templates: ["oscarllamas6/goreleaser-demo:{{ .Version }}"]
+  dockerfile: Dockerfile
+  build_flag_templates:
+  - --label=org.opencontainers.image.title={{ .ProjectName }}
+  - --label=org.opencontainers.image.description={{ .ProjectName }}
+  - --label=org.opencontainers.image.url=https://github.com/goreleaser/goreleaser-demo
+  - --label=org.opencontainers.image.source=https://github.com/goreleaser/goreleaser-demo
+  - --label=org.opencontainers.image.version={{ .Version }}
+  - --label=org.opencontainers.image.created={{ time "2022-01-02T15:04:05Z07:00" }}
+  - --label=org.opencontainers.image.revision={{ .FullCommit }}
+  - --label=org.opencontainers.image.licenses=MIT
+nfpms:
+- maintainer: Oscar Alfredo Llamas Lemus <oscarllamasusac@gmail.com>
+  description: GoReleaser Demo.
+  homepage: https://github.com/OscarLlamas6/
+  license: MIT
+  formats:
+  - deb
+  - rpm
+  - apk
