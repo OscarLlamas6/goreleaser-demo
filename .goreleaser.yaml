@@ -11,6 +11,7 @@ builds:
 dockers:
 - image_templates: ["oscarllamas6/goreleaser-demo:{{ .Version }}"]
   dockerfile: Dockerfile
+  skip_push: "false"
   build_flag_templates:
   - --label=org.opencontainers.image.title={{ .ProjectName }}
   - --label=org.opencontainers.image.description={{ .ProjectName }}
